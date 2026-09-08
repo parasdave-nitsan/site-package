@@ -1,7 +1,7 @@
 {
     "name": "company/website-starter-kit",
     "type": "typo3-cms-extension",
-    "description": "Company Website Starter Kit with image slider, FAQ and contact form components",
+    "description": "Company Website Starter Kit",
     "homepage": "https://homepage.com",
     "license": "GPL-2.0-or-later",
     "keywords": [
@@ -17,10 +17,8 @@
     "require": {
         "typo3/cms-core": "^14.0",
         "typo3/cms-rte-ckeditor": "^14.0",
-        "typo3/cms-fluid-styled-content": "^14.0"
-    },
-    "suggest": {
-        "friendsoftypo3/content-blocks": "Allows to create custom content elements."
+        "typo3/cms-fluid-styled-content": "^14.0",
+        "friendsoftypo3/content-blocks": "^2.4"
     },
     "autoload": {
         "psr-4": {

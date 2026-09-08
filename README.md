@@ -1,74 +1,217 @@
-# TYPO3 Site Package Tutorial Example
+Website Starter Kit
+This Website Starter Kit is a TYPO3 CMS extension for building websites with reusable components such as an image slider, FAQ, contact form, and custom Content Blocks.
 
-This Site Package can be used to follow the [TYPO3 Site
-Package Tutorial](https://docs.typo3.org/permalink/t3sitepackage:start@14.3).
-Team.
+It is compatible with TYPO3 CMS 14.0 and newer within the 14.x release line.
 
-The tutorial describes the steps required to turn a basic design
-template (HTML, CSS, JavaScript files, etc.) into a fully working,
-mobile-responsive website. By following the steps of the Site Package
-Tutorial, the reader builds a modern extension with all relevant files
-stored at a central point and changes can easily be tracked in version
-control. Despite the fact that TYPO3 supports several methods of
-implementing websites, this approach is a very flexible and
-professional way.
+Installation with Composer
+The Website Starter Kit can be installed in a Composer-based TYPO3 installation.
 
-## Installation with Composer
+Install from Git
+Add the Website Starter Kit Git repository to your project's composer.json:
 
-Download the Site Package and save it into folder [packages/](https://docs.typo3.org/permalink/t3coreapi:directory-packages)
-in the root of your TYPO3 installation.
+"repositories": {
+    "website-starter-kit": {
+        "type": "vcs",
+        "url": "YOUR-GIT-REPOSITORY-URL"
+    }
+}
 
-Require the Site Package using Composer and DDEV:
+Then require the extension:
 
-```
-ddev composer req company/my-site-package:"@dev"
-```
+ddev composer require company/website-starter-kit:@dev
 
-Or just Composer:
+Or with Composer directly:
 
-```
-composer req company/my-site-package:"@dev"
-```
+composer require company/website-starter-kit:@dev
 
-## Classic TYPO3 installations
+The extension declares the following dependencies automatically:
 
-When you intend to follow the Site Package Tutorial we recommend that you use a Composer-based installation
-all paths and commands in the Tutorial are based on that type of installation.
+TYPO3 CMS Core ^14.0
+TYPO3 CMS RTE CKEditor ^14.0
+TYPO3 CMS Fluid Styled Content ^14.0
+Friends of TYPO3 Content Blocks ^2.4
+Therefore, you do not need to install Content Blocks separately when installing this extension.
 
-Download the Site Package and save it into folder `typo3conf/ext/` in the root of your TYPO3 installation.
+Local Development Installation
+For local development, you can place the extension in the packages/ directory of your TYPO3 project:
 
-Activate extension "My Site Package" with key my_site_package in the Extension Manager.
+packages/
+└── website-starter-kit/
+    ├── Classes/
+    ├── Configuration/
+    ├── ContentBlocks/
+    ├── Resources/
+    ├── composer.json
+    └── ext_emconf.php
 
-## Load Example data
+Configure the path repository in your root composer.json:
 
-With DDEV call:
+"repositories": {
+    "packages": {
+        "type": "path",
+        "url": "./packages/*"
+    }
+}
 
-```
+Then install the extension:
+
+ddev composer require company/website-starter-kit:@dev
+
+Or:
+
+composer require company/website-starter-kit:@dev
+
+Extension Information
+Property	Value
+Composer package	company/website-starter-kit
+TYPO3 extension key	website_starter_kit
+PHP namespace	Company\WebsiteStarterKit
+Extension type	typo3-cms-extension
+TYPO3 version	^14.0
+Content Blocks	^2.4
+
+TYPO3 Extension Manager
+The extension key is:
+
+website_starter_kit
+
+The extension is displayed in the TYPO3 backend with the title:
+
+Website Starter Kit
+
+The extension key and the backend title are intentionally different. The extension key is machine-readable, while the title is human-readable.
+
+Content Blocks
+This extension uses Content Blocks to provide custom content elements.
+
+The package requires:
+
+friendsoftypo3/content-blocks ^2.4
+
+The extension contains custom Content Blocks such as the Image Slider.
+
+For example:
+
+name: website-starter-kit/image-slider
+typeName: website_starter_kit_image_slider
+group: website_starter_kit
+
+Image Slider
+The Image Slider Content Block supports multiple slider items.
+
+Each slider item can contain:
+
+Image
+Header
+Link
+Example configuration:
+
+name: website-starter-kit/image-slider
+typeName: website_starter_kit_image_slider
+group: website_starter_kit
+
+prefixFields: true
+prefixType: full
+
+fields:
+  - identifier: slider_items
+    label: Slider Items
+    type: Collection
+    minitems: 1
+
+    appearance:
+      collapseAll: true
+      levelLinksPosition: both
+
+    fields:
+      - identifier: slider_image
+        label: Image
+        type: File
+        allowed: common-image-types
+        minitems: 1
+        relationship: manyToOne
+
+      - identifier: slider_header
+        label: Header
+        type: Text
+
+      - identifier: slider_link
+        label: Link
+        type: Link
+
+Load Example Data
+If the extension provides initial/example data, it can be loaded with DDEV:
+
 ddev typo3 extension:setup
-```
 
 Without DDEV:
 
-```
 vendor/bin/typo3 extension:setup
-```
 
-If automatic loading fails you can also try to use the import command:
+If automatic loading does not work, you can import the data manually:
 
-```
-ddev typo3 impexp:import EXT:my_site_package/Initialisation/data.xml
-```
+ddev typo3 impexp:import EXT:website_starter_kit/Initialisation/data.xml
 
-## Include the Set manually
+Include the Site Set
+If the extension provides a Site Set, include the Website Starter Kit Set in your TYPO3 site configuration.
 
-If you decide not to load the Example data, the Set of this Site Package needs to be included manually:
+For example, edit:
 
-Include the Set "My Site Package" in your site configuration.
-See also: [Create a basic site set](https://docs.typo3.org/permalink/t3sitepackage:minimal-extension-siteset).
+config/sites/mysite/config.yaml
 
-You can also edit the file `config/sites/mysite/config.yaml` and include the following lines:
+and add:
 
-```
 dependencies:
-  - company/my-site-package
-```
+  - company/website-starter-kit
+
+The dependency name uses the Site Set identifier defined by the extension.
+
+Classic TYPO3 Installations
+For Composer-based TYPO3 installations, Composer installation is recommended.
+
+For a classic TYPO3 installation, place the extension in:
+
+typo3conf/ext/website_starter_kit/
+
+Then activate the extension from the TYPO3 Extension Manager.
+
+The extension key is:
+
+website_starter_kit
+
+Requirements
+TYPO3 CMS ^14.0
+PHP version supported by your installed TYPO3 CMS 14 version
+Friends of TYPO3 Content Blocks ^2.4
+Development
+The extension follows PSR-4 autoloading:
+
+Company\WebsiteStarterKit\
+
+mapped to:
+
+Classes/
+
+The Composer configuration contains:
+
+"autoload": {
+    "psr-4": {
+        "Company\\WebsiteStarterKit\\": "Classes/"
+    }
+}
+
+After changing PHP classes or Composer configuration, regenerate the autoloader:
+
+ddev composer dump-autoload
+
+License
+This extension is licensed under:
+
+GPL-2.0-or-later
+
+Author
+John Doe
+
+Email: john.doe@gmail.com
+
+Homepage: https://homepage.com
