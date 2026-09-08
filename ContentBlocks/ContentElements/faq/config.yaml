@@ -1,7 +1,6 @@
 name: nitsan/faq
 typeName: nitsan_faq
-title: FAQ
-group: my_site_package
+group: Website Starter Kit
 prefixFields: true
 prefixType: full
 

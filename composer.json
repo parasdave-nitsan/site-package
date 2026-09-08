@@ -1,11 +1,12 @@
 {
-    "name": "company/my-site-package",
+    "name": "company/website-starter-kit",
     "type": "typo3-cms-extension",
-    "description": "Company Website Package - Image Slider, FAQ and Contact Form Components",
+    "description": "Company Website Starter Kit with image slider, FAQ and contact form components",
     "homepage": "https://homepage.com",
-    "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS"],
-    "version": "1.0.0",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "TYPO3 CMS"
+    ],
     "authors": [
         {
             "name": "John Doe",
@@ -19,19 +20,16 @@
         "typo3/cms-fluid-styled-content": "^14.0"
     },
     "suggest": {
-        "friendsoftypo3/content-blocks": "Allows to create custom content elements. "
+        "friendsoftypo3/content-blocks": "Allows to create custom content elements."
     },
     "autoload": {
         "psr-4": {
-            "Company\\MySitePackage\\": "Classes/"
+            "Company\\WebsiteStarterKit\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "Website starter kit",
-            "Package": {
-                "providesPackages": {}
-            }
+            "extension-key": "website_starter_kit"
         }
     }
 }

@@ -1,6 +1,6 @@
 name: my-site-package/image-slider
 typeName: my_site_package_image_slider
-group: my_site_package
+group: Website Starter Kit
 
 prefixFields: true
 prefixType: full

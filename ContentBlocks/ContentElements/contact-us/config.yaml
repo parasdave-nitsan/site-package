@@ -1,6 +1,6 @@
 name: nitsan/contact-us
 typeName: nitsan_contactus
-group: my_site_package
+group: Website Starter Kit
 prefixFields: true
 prefixType: full
 
