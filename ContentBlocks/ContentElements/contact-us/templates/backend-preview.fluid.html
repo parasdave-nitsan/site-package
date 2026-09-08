@@ -1,0 +1,69 @@
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+    <div>
+        Contact Us
+    </div>
+</f:section>
+
+
+<f:section name="Content">
+
+    <div class="row">
+
+        <!-- Phone -->
+        <f:if condition="{data.nitsan_contactus_phone}">
+            <div class="col">
+                <strong>Phone:</strong>
+                {data.nitsan_contactus_phone}
+            </div>
+        </f:if>
+
+        <!-- Email -->
+        <f:if condition="{data.nitsan_contactus_email}">
+            <div class="col">
+                <strong>Email:</strong>
+                {data.nitsan_contactus_email}
+            </div>
+        </f:if>
+
+        <!-- Address -->
+        <f:if condition="{data.nitsan_contactus_address}">
+            <div class="col">
+                <strong>Address:</strong>
+                {data.nitsan_contactus_address}
+            </div>
+        </f:if>
+
+        <!-- Latitude -->
+        <f:if condition="{data.nitsan_contactus_latitude}">
+            <div class="col">
+                <strong>Latitude:</strong>
+                {data.nitsan_contactus_latitude}
+            </div>
+        </f:if>
+
+        <!-- Longitude -->
+        <f:if condition="{data.nitsan_contactus_longitude}">
+            <div class="col">
+                <strong>Longitude:</strong>
+                {data.nitsan_contactus_longitude}
+            </div>
+        </f:if>
+
+    </div>
+
+</f:section>
+
+
+<f:section name="Footer">
+
+    <f:if condition="{data.nitsan_contactus_latitude} && {data.nitsan_contactus_longitude}">
+        <div>
+            Location:
+            {data.nitsan_contactus_latitude},
+            {data.nitsan_contactus_longitude}
+        </div>
+    </f:if>
+
+</f:section>

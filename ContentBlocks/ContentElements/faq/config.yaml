@@ -1,0 +1,25 @@
+name: nitsan/faq
+typeName: nitsan_faq
+title: FAQ
+group: my_site_package
+prefixFields: true
+prefixType: full
+
+fields:
+  -
+    identifier: faqs
+    label: FAQ Items
+    type: Collection
+
+    fields:
+      -
+        identifier: question
+        label: Question
+        type: Text
+
+      -
+        identifier: answer
+        label: Answer
+        type: Textarea
+        enableRichtext: true
+        richtextConfiguration: default

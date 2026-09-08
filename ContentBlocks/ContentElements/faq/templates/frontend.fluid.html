@@ -1,0 +1,53 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:asset.css identifier="content-block-css-nitsan-faq" href="{cb:assetPath()}/faq.css" />
+<f:asset.script identifier="content-block-css-nitsan-faq" src="{cb:assetPath()}/faq.js" />
+
+<section class="faq-section">
+    <div class="faq-container">
+
+        <div class="faq-heading">
+            <span class="faq-label">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to the most common questions.</p>
+        </div>
+
+        <div class="faq-list">
+
+            <f:for each="{data.faqs}" as="faq" iteration="iterator">
+
+                <f:if condition="{faq.question} && {faq.answer}">
+
+                    <div class="faq-item">
+
+                        <button class="faq-question" type="button" aria-expanded="false"
+                            aria-controls="faq-answer-{data.uid}-{iterator.index}">
+                            <span class="faq-question__text">
+                                {faq.question}
+                            </span>
+
+                            <span class="faq-question__icon" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
+
+                        <div id="faq-answer-{data.uid}-{iterator.index}" class="faq-answer" hidden>
+                            <div class="faq-answer__inner">
+                                <f:format.html>
+                                    {faq.answer}
+                                </f:format.html>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </f:if>
+
+            </f:for>
+
+        </div>
+
+    </div>
+</section>
+
+</html>

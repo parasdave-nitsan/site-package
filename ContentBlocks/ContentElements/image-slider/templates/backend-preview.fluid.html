@@ -1,0 +1,257 @@
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+
+    <div class="image-slider-preview__header">
+
+        <strong>Image Slider</strong>
+
+        <f:if condition="{data.mysitepackage_imageslider_slider_items}">
+            <span class="image-slider-preview__count">
+                {data.mysitepackage_imageslider_slider_items -> f:count()}
+                slides
+            </span>
+        </f:if>
+
+    </div>
+
+</f:section>
+
+
+<f:section name="Content">
+
+    <div class="image-slider-preview__items">
+
+        <f:for
+            each="{data.mysitepackage_imageslider_slider_items}"
+            as="slide"
+            iteration="iterator"
+        >
+
+            <div class="image-slider-preview__item">
+
+                <!-- Image -->
+                <div class="image-slider-preview__image">
+
+                    <f:if condition="{slide.slider_image}">
+
+                        <f:image
+                            image="{slide.slider_image}"
+                            width="180c"
+                            height="100c"
+                            crop="true"
+                            alt="{slide.slider_header}"
+                        />
+
+                    </f:if>
+
+                </div>
+
+
+                <!-- Information -->
+                <div class="image-slider-preview__content">
+
+                    <div class="image-slider-preview__number">
+                        Slide {iterator.cycle}
+                    </div>
+
+
+                    <f:if condition="{slide.slider_header}">
+
+                        <div class="image-slider-preview__title">
+                            {slide.slider_header}
+                        </div>
+
+                    </f:if>
+
+
+                    <f:if condition="{slide.slider_link}">
+
+                        <div class="image-slider-preview__link">
+                            Link configured
+                        </div>
+
+                    </f:if>
+
+                </div>
+
+            </div>
+
+        </f:for>
+
+
+        <!-- Empty state -->
+        <f:if condition="{data.mysitepackage_imageslider_slider_items}">
+
+            <f:else>
+
+                <div class="image-slider-preview__empty">
+                    No slides have been added yet.
+                </div>
+
+            </f:else>
+
+        </f:if>
+
+    </div>
+
+</f:section>
+
+
+<f:section name="Footer">
+
+    <f:if condition="{data.mysitepackage_imageslider_slider_items}">
+
+        <div class="image-slider-preview__footer">
+            Image slider configured with
+            {data.mysitepackage_imageslider_slider_items -> f:count()}
+            slide(s).
+        </div>
+
+    </f:if>
+
+</f:section>
+
+
+<style>
+
+    .image-slider-preview__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 8px 0;
+    }
+
+
+    .image-slider-preview__count {
+        margin-left: 10px;
+
+        color: #777;
+        font-size: 12px;
+    }
+
+
+    /* Items */
+
+    .image-slider-preview__items {
+        display: flex;
+        gap: 12px;
+
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+
+    .image-slider-preview__item {
+        display: flex;
+
+        flex: 0 0 300px;
+
+        min-height: 100px;
+
+        overflow: hidden;
+
+        background: #fff;
+
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+
+    /* Image */
+
+    .image-slider-preview__image {
+        width: 180px;
+        height: 100px;
+
+        flex-shrink: 0;
+
+        overflow: hidden;
+
+        background: #eee;
+    }
+
+
+    .image-slider-preview__image img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+    }
+
+
+    /* Content */
+
+    .image-slider-preview__content {
+        min-width: 0;
+
+        padding: 10px;
+    }
+
+
+    .image-slider-preview__number {
+        margin-bottom: 5px;
+
+        color: #888;
+
+        font-size: 11px;
+        font-weight: 600;
+
+        text-transform: uppercase;
+    }
+
+
+    .image-slider-preview__title {
+        color: #333;
+
+        font-size: 13px;
+        font-weight: 600;
+
+        line-height: 1.4;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .image-slider-preview__link {
+        margin-top: 8px;
+
+        color: #0d6efd;
+
+        font-size: 12px;
+    }
+
+
+    /* Empty */
+
+    .image-slider-preview__empty {
+        width: 100%;
+
+        padding: 20px;
+
+        color: #777;
+
+        text-align: center;
+
+        background: #fff;
+
+        border: 1px dashed #ccc;
+        border-radius: 4px;
+    }
+
+
+    /* Footer */
+
+    .image-slider-preview__footer {
+        padding-top: 8px;
+
+        color: #777;
+
+        font-size: 11px;
+    }
+
+</style>

@@ -1,0 +1,204 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:asset.css
+    identifier="content-block-css-nitsan-contact-us"
+    href="{cb:assetPath()}/contact-us.css"
+/>
+
+<section class="contact-us">
+
+    <div class="contact-us__container">
+
+        <!-- Contact Information -->
+        <div class="contact-us__information">
+
+            <div class="contact-us__eyebrow">
+                Get in touch
+            </div>
+
+            <h2 class="contact-us__title">
+                Contact Us
+            </h2>
+
+            <p class="contact-us__intro">
+                Have a question or want to learn more?
+                Get in touch with us and our team will be happy to help.
+            </p>
+
+
+            <div class="contact-us__details">
+
+                <!-- Phone -->
+                <f:if condition="{data.nitsan_contactus_phone}">
+
+                    <div class="contact-us__detail">
+
+                        <div class="contact-us__icon contact-us__icon--phone">
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2
+                                    19.79 19.79 0 0 1-8.63-3.07
+                                    19.5 19.5 0 0 1-6-6
+                                    A19.79 19.79 0 0 1 2.12 4.18
+                                    2 2 0 0 1 4.11 2h3
+                                    a2 2 0 0 1 2 1.72
+                                    12.84 12.84 0 0 0 .7 2.81
+                                    2 2 0 0 1-.45 2.11L8.09 9.91
+                                    a16 16 0 0 0 6 6l1.27-1.27
+                                    a2 2 0 0 1 2.11-.45
+                                    12.84 12.84 0 0 0 2.81.7
+                                    A2 2 0 0 1 22 16.92z"
+                                />
+                            </svg>
+                        </div>
+
+                        <div class="contact-us__detail-content">
+
+                            <span class="contact-us__detail-label">
+                                Phone
+                            </span>
+
+                            <a
+                                href="tel:{data.nitsan_contactus_phone}"
+                                class="contact-us__detail-value"
+                            >
+                                {data.nitsan_contactus_phone}
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </f:if>
+
+
+                <!-- Email -->
+                <f:if condition="{data.nitsan_contactus_email}">
+
+                    <div class="contact-us__detail">
+
+                        <div class="contact-us__icon contact-us__icon--email">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 4h16c1.1 0 2 .9 2 2v12
+                                    c0 1.1-.9 2-2 2H4
+                                    c-1.1 0-2-.9-2-2V6
+                                    c0-1.1.9-2 2-2z"
+                                />
+
+                                <polyline
+                                    points="22,6 12,13 2,6"
+                                />
+                            </svg>
+
+                        </div>
+
+                        <div class="contact-us__detail-content">
+
+                            <span class="contact-us__detail-label">
+                                Email
+                            </span>
+
+                            <a
+                                href="mailto:{data.nitsan_contactus_email}"
+                                class="contact-us__detail-value"
+                            >
+                                {data.nitsan_contactus_email}
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </f:if>
+
+
+                <!-- Address -->
+                <f:if condition="{data.nitsan_contactus_address}">
+
+                    <div class="contact-us__detail">
+
+                        <div class="contact-us__icon contact-us__icon--location">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 10c0 7-9 12-9 12S3 17 3 10
+                                    a9 9 0 1 1 18 0z"
+                                />
+
+                                <circle
+                                    cx="12"
+                                    cy="10"
+                                    r="3"
+                                />
+
+                            </svg>
+
+                        </div>
+
+                        <div class="contact-us__detail-content">
+
+                            <span class="contact-us__detail-label">
+                                Address
+                            </span>
+
+                            <div class="contact-us__detail-value">
+
+                                <f:format.nl2br>{data.nitsan_contactus_address}
+                                </f:format.nl2br>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </f:if>
+
+            </div>
+
+        </div>
+
+
+        <!-- Map -->
+        <f:if condition="{data.nitsan_contactus_latitude} && {data.nitsan_contactus_longitude}">
+
+            <div class="contact-us__map-wrapper">
+
+                <div class="contact-us__map">
+
+                    <iframe
+                        src="https://www.google.com/maps?q={data.nitsan_contactus_latitude},{data.nitsan_contactus_longitude}&output=embed"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Our location"
+                    ></iframe>
+
+                </div>
+
+            </div>
+
+        </f:if>
+
+    </div>
+
+</section>
+
+</html>

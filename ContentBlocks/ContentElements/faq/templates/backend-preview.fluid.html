@@ -1,0 +1,216 @@
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+
+    <div class="faq-backend-preview__header">
+        <strong>FAQ</strong>
+
+        <f:if condition="{data.faqs}">
+            <span class="faq-backend-preview__count">
+                {data.faqs -> f:count()} questions
+            </span>
+        </f:if>
+    </div>
+
+</f:section>
+
+
+<f:section name="Content">
+
+    <f:if condition="{data.faqs}">
+
+        <div class="faq-backend-preview__items">
+
+            <f:for
+                each="{data.faqs}"
+                as="faq"
+                iteration="iterator"
+            >
+
+                <div class="faq-backend-preview__item">
+
+                    <div class="faq-backend-preview__number">
+                        {iterator.cycle}
+                    </div>
+
+                    <div class="faq-backend-preview__content">
+
+                        <!-- Question -->
+                        <div class="faq-backend-preview__question">
+
+                            <strong>
+                                {faq.question}
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Answer -->
+                        <f:if condition="{faq.answer}">
+
+                            <div class="faq-backend-preview__answer">
+
+                                <f:format.crop maxCharacters="150">
+                                    <f:format.stripTags>
+                                        {faq.answer}
+                                    </f:format.stripTags>
+                                </f:format.crop>
+
+                            </div>
+
+                        </f:if>
+
+                    </div>
+
+                </div>
+
+            </f:for>
+
+        </div>
+
+    <f:else>
+
+        <div class="faq-backend-preview__empty">
+            No FAQ items have been added yet.
+        </div>
+
+    </f:else>
+
+    </f:if>
+
+</f:section>
+
+
+<f:section name="Footer">
+
+    <f:if condition="{data.faqs}">
+
+        <div class="faq-backend-preview__footer">
+
+            {data.faqs -> f:count()}
+            FAQ item(s) configured.
+
+        </div>
+
+    </f:if>
+
+</f:section>
+
+
+<style>
+
+    .faq-backend-preview__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 8px 0;
+    }
+
+
+    .faq-backend-preview__count {
+        color: #777;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+
+    /* Items */
+
+    .faq-backend-preview__items {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    .faq-backend-preview__item {
+        display: flex;
+        align-items: flex-start;
+
+        padding: 10px 12px;
+
+        background: #fff;
+
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+
+    /* Number */
+
+    .faq-backend-preview__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 26px;
+        height: 26px;
+
+        flex: 0 0 26px;
+
+        margin-right: 10px;
+
+        color: #555;
+
+        background: #f0f0f0;
+
+        border-radius: 50%;
+
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    /* Content */
+
+    .faq-backend-preview__content {
+        min-width: 0;
+    }
+
+
+    .faq-backend-preview__question {
+        color: #333;
+
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+    .faq-backend-preview__answer {
+        margin-top: 5px;
+
+        color: #777;
+
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* Empty */
+
+    .faq-backend-preview__empty {
+        padding: 20px;
+
+        color: #777;
+
+        text-align: center;
+
+        background: #fff;
+
+        border: 1px dashed #ccc;
+        border-radius: 4px;
+    }
+
+
+    /* Footer */
+
+    .faq-backend-preview__footer {
+        padding-top: 8px;
+
+        color: #777;
+
+        font-size: 11px;
+    }
+
+</style>

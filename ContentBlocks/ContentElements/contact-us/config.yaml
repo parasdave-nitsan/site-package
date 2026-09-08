@@ -1,0 +1,27 @@
+name: nitsan/contact-us
+typeName: nitsan_contactus
+group: my_site_package
+prefixFields: true
+prefixType: full
+
+fields:
+
+  - identifier: phone
+    label: Phone number
+    type: Number
+
+  - identifier: email
+    label: Email
+    type: Email
+
+  - identifier: address
+    label: Address
+    type: Textarea
+
+  - identifier: latitude
+    label: Latitude
+    type: Text
+
+  - identifier: longitude
+    label: Longitude
+    type: Text

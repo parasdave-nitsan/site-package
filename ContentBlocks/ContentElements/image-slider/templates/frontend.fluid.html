@@ -1,0 +1,127 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:asset.css
+    identifier="content-block-css-nitsan-image-slider"
+    href="{cb:assetPath()}/image-slider.css"
+/>
+
+<f:asset.script
+    identifier="content-block-js-nitsan-image-slider"
+    src="{cb:assetPath()}/image-slider.js"
+/>
+
+<section class="modern-slider" data-slider>
+
+    <div class="modern-slider__viewport">
+
+        <div class="modern-slider__track">
+
+            <f:for
+                each="{data.mysitepackage_imageslider_slider_items}"
+                as="slide"
+                iteration="iterator"
+            >
+
+                <article
+                    class="modern-slider__slide{f:if(condition: iterator.isFirst, then: ' is-active')}"
+                    data-slide="{iterator.index}"
+                >
+
+                    <!-- Image -->
+                    <div class="modern-slider__media">
+
+                        <f:if condition="{slide.slider_image}">
+
+                            <f:image
+                                image="{slide.slider_image}"
+                                class="modern-slider__image"
+                                alt="{slide.slider_header}"
+                            />
+
+                        </f:if>
+
+                    </div>
+
+                    <!-- Overlay -->
+                    <div class="modern-slider__overlay"></div>
+
+                    <!-- Content -->
+                    <div class="modern-slider__content">
+
+                        <f:if condition="{slide.slider_header}">
+
+                            <h2 class="modern-slider__title">
+                                {slide.slider_header}
+                            </h2>
+
+                        </f:if>
+
+                        <f:if condition="{slide.slider_link}">
+
+                            <f:link.typolink
+                                parameter="{slide.slider_link}"
+                                class="modern-slider__button"
+                            >
+                                Discover More
+                                <span aria-hidden="true">→</span>
+                            </f:link.typolink>
+
+                        </f:if>
+
+                    </div>
+
+                </article>
+
+            </f:for>
+
+        </div>
+
+    </div>
+
+    <!-- Previous / Next buttons -->
+
+    <button
+        class="modern-slider__arrow modern-slider__arrow--prev"
+        type="button"
+        data-slider-prev
+        aria-label="Previous slide"
+    >
+        <span aria-hidden="true">←</span>
+    </button>
+
+    <button
+        class="modern-slider__arrow modern-slider__arrow--next"
+        type="button"
+        data-slider-next
+        aria-label="Next slide"
+    >
+        <span aria-hidden="true">→</span>
+    </button>
+
+    <!-- Bottom controls -->
+
+    <div class="modern-slider__controls">
+
+        <div
+            class="modern-slider__dots"
+            data-slider-dots
+            aria-label="Slider navigation"
+        ></div>
+
+        <button
+            class="modern-slider__play"
+            type="button"
+            data-slider-play
+            aria-label="Pause slider"
+        >
+            <span data-play-icon>Ⅱ</span>
+        </button>
+
+    </div>
+
+</section>
+
+</html>

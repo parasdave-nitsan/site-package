@@ -1,0 +1,32 @@
+name: my-site-package/image-slider
+typeName: my_site_package_image_slider
+group: my_site_package
+
+prefixFields: true
+prefixType: full
+
+fields:
+  - identifier: slider_items
+    label: Slider Items
+    type: Collection
+    minitems: 1
+
+    appearance:
+      collapseAll: true
+      levelLinksPosition: both
+
+    fields:
+      - identifier: slider_image
+        label: Image
+        type: File
+        allowed: common-image-types
+        minitems: 1
+        relationship: manyToOne
+
+      - identifier: slider_header
+        label: Header
+        type: Text
+
+      - identifier: slider_link
+        label: Link
+        type: Link
